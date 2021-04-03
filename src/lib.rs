@@ -43,6 +43,7 @@ use frame_support::{
     Hashable,
 };
 use frame_system::ensure_signed;
+use frame_system::Event;
 use sp_runtime::traits::{Hash, Member};
 use sp_std::{cmp::Eq, fmt::Debug, vec::Vec};
 
@@ -105,8 +106,8 @@ decl_storage! {
 decl_event!(
     pub enum Event<T, I = DefaultInstance>
     where
-        CommodityId = <T as frame_system::Trait>::Hash,
-        AccountId = <T as frame_system::Trait>::AccountId,
+        CommodityId = <T as frame_system::Config>::Hash,
+        AccountId = <T as frame_system::Config::AccountId,
     {
         /// The commodity has been burned.
         Burned(CommodityId),
